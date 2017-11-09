@@ -1,0 +1,5 @@
+<div *ngIf="products != null && products.length > 0">
+  <app-product-component *ngFor="let item of products"
+                         [product]=item
+                         (onBuy)="onBuy.emit($event)"></app-product-component>
+</div>

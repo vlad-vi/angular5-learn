@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {CartComponent} from './cart/cart.component';
+import {Product} from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  @ViewChild(CartComponent) cart: CartComponent;
+
+  onBuy($event: Product) {
+    this.cart.addProduct($event);
+  }
 }
