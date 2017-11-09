@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { ProductsService } from './services/products-service.service';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {ProductsService} from './services/products-service.service';
 
-import { AppComponent } from './app.component';
-import { ProductComponent } from './product-component/product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { CartComponent } from './cart/cart.component';
+import {AppComponent} from './app.component';
+import {ProductComponent} from './product-component/product.component';
+import {ProductListComponent} from './product-list/product-list.component';
+import {CartComponent} from './cart/cart.component';
+import {CartService} from './services/cart-service.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,9 +18,11 @@ import { CartComponent } from './cart/cart.component';
     CartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [ProductsService],
+  providers: [ProductsService, CartService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

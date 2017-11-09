@@ -10,6 +10,7 @@ export class CartService {
   }
 
   processPayment(productsToBuy: Product[]): void {
+    console.log('request to api being performed');
     this.http.post(apiUrl + 'api/products', productsToBuy)
       .subscribe();
   }
