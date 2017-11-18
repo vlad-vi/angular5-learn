@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output} from '@angular/core';
-import {Product} from '../models/product.model';
+import {CookedProduct} from '../../models/product.model';
 
 @Component({
   selector: 'app-product-component',
@@ -9,8 +9,8 @@ import {Product} from '../models/product.model';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() product: Product;
-  @Output() onBuy: EventEmitter<Product> = new EventEmitter();
+  @Input() product: CookedProduct;
+  @Output() onAddToCart: EventEmitter<CookedProduct> = new EventEmitter();
 
   constructor() {
   }

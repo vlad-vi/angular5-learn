@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import {CartComponent} from './cart/cart.component';
-import {Product} from './models/product.model';
+import {CartListComponent} from './cart/components/cart-list/cart-list.component';
+import {CookedProduct} from './product/models/product.model';
+import {ProductListComponent} from './product/components/product-list/product-list.component';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,15 @@ import {Product} from './models/product.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild(CartComponent) cart: CartComponent;
+  @ViewChild(CartListComponent) cart: CartListComponent;
+  @ViewChild('productList') productList: ProductListComponent;
 
-  onBuy($event: Product) {
-    this.cart.addProduct($event);
+  onBuy(product: CookedProduct) {
+    product.itemsInStock--;
+    this.cart.addProduct(product);
+  }
+
+  itemRemovedFromCart(productName: string) {
+    this.productList.returnProduct(productName);
   }
 }
