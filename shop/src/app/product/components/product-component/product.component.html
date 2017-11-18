@@ -3,12 +3,15 @@
   <div>Description: {{product.description}}</div>
   <div>Price: {{product.price}}</div>
   <div>Category: {{ product.category }}</div>
-  <div>Is available: {{product.isAvailable}}</div>
 
   <b>Ingredients</b>
   <div *ngFor="let ingr of product.ingredients">{{ingr}}</div>
 
   <b>Equivalents</b>
   <div *ngFor="let equivalent of product.equivalents">{{equivalent}}</div>
-  <button (click)="onBuy.emit(product)">Buy</button>
+  <button (click)="onAddToCart.emit(product)"
+          [ngClass]="{'buttonInactive': product.itemsInStock <= 0}"
+          [disabled]="product.itemsInStock <= 0">
+    Add to Cart
+  </button>
 </div>

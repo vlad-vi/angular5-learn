@@ -1,5 +1,5 @@
 export enum ProductCategory {
-  games,
+  salad,
   consoles,
-  figurines
+  pie
 }

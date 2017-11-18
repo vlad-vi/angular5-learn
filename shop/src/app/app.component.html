@@ -1,4 +1,4 @@
-<app-cart></app-cart>
+<cart-list (onCartItemDeleted)="itemRemovedFromCart($event)"></cart-list>
 <div>
- <app-product-list (onBuy)="onBuy($event)"></app-product-list>
+ <product-list (onAddToCart)="onBuy($event)" #productList></product-list>
 </div>

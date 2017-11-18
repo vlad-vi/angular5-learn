@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+$buttonActiveColor: #4CAF50;
+$buttonInActiveColor: #CCC;
+$txtButtonInActive: #333;
+
+button {
+  background-color: $buttonActiveColor; /* Green */
+  border: none;
+  color: white;
+  padding: 9px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttonInactive{
+  background-color: $buttonInActiveColor;
+  color: $txtButtonInActive;
+}
+
+.buttonDelete{
+  background-color: brown;
+}
