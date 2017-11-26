@@ -13,8 +13,7 @@ import {CartItemComponent} from './components/cart-item/cart-item.component';
     CartItemComponent
   ],
   exports: [
-    CartListComponent,
-    CartItemComponent
+    CartListComponent
   ],
   providers: [CartService]
 })

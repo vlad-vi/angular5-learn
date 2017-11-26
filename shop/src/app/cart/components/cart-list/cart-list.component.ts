@@ -23,20 +23,7 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.productsInCart = [];
-    this.subscription = this.cartService.onReceive.subscribe(
-      (data: CookedProduct) => {
-        if (!!data) {
-          const item = this.productsInCart.find((cartItem: CartItem) => cartItem.product.name === data.name);
-          if (!!item) {
-            item.quantity++;
-          }else {
-            this.productsInCart.push({product: data, quantity: 1});
-          }
-          this.recalcTotalPrice();
-        }
-      },
-      (error) => console.log(error)
-    );
+    this.subscribeToCartChanges();
   }
 
   ngOnDestroy(): void {
@@ -81,6 +68,26 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   private recalcTotalPrice(): void {
-    this.totalPrice = this.cartService.getTotalPrice(this.productsInCart);
+    this.totalPrice = CartService.getTotalPrice(this.productsInCart);
+  }
+
+  private subscribeToCartChanges(): void {
+    this.subscription = this.cartService.onReceive.subscribe(
+      (data: CookedProduct) => this.addProductToCart(data),
+      (error) => console.log(error)
+    );
+  }
+
+  private addProductToCart(data: CookedProduct): void {
+    if (!!data) {
+      const item = this.productsInCart.find((cartItem: CartItem) => cartItem.product.name === data.name);
+      if (!!item) {
+        item.quantity++;
+        console.log(item.quantity);
+      }else {
+        this.productsInCart.push({product: data, quantity: 1});
+      }
+      this.recalcTotalPrice();
+    }
   }
 }

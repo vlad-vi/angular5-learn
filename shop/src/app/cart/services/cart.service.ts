@@ -14,11 +14,7 @@ export class CartService {
   constructor() {
   }
 
-  processPayment(productsToBuy: CartItem[]): void {
-
-  }
-
-  getTotalPrice(productsToBuy: CartItem[]): number {
+  static getTotalPrice(productsToBuy: CartItem[]): number {
     let sum = 0;
     for (const item of productsToBuy) {
       sum += item.product.price * item.quantity;
@@ -26,7 +22,12 @@ export class CartService {
     return sum;
   }
 
+  processPayment(productsToBuy: CartItem[]): void {
+  }
+
   addProductToCart(product: CookedProduct) {
     this.getSubject.next(product);
   }
+
+
 }

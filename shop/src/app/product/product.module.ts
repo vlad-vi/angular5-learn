@@ -13,7 +13,6 @@ import {ProductsService} from './services/products.service';
     ProductListComponent
   ],
   exports: [
-    ProductComponent,
     ProductListComponent
   ],
   providers: [

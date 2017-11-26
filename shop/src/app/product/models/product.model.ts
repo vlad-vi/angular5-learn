@@ -15,11 +15,13 @@ export interface ICookable {
 }
 
 export class CookedProduct implements IProduct, ICookable {
-  name: string;
-  description?: string;
-  price: number;
-  category: ProductCategory;
-  itemsInStock: number;
-  ingredients: Array<string>;
-  equivalents: Array<string>;
+  constructor(public name: string,
+              public price: number,
+              public category: ProductCategory,
+              public itemsInStock: number,
+              public ingredients: Array<string>,
+              public equivalents: Array<string>,
+              public description?: string
+              ) {
+  }
 }
