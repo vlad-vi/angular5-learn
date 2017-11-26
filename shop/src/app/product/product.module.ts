@@ -10,7 +10,7 @@ import {ProductsService} from './services/products.service';
   ],
   declarations: [
     ProductComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
   exports: [
     ProductListComponent

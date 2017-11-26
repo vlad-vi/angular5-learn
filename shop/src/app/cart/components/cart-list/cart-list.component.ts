@@ -12,82 +12,90 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class CartListComponent implements OnInit, OnDestroy {
 
-  productsInCart: CartItem[];
+  productsInCart: CartItem[] = [];
   totalPrice = 0;
+  totalItemsInCart = 0;
   @ViewChildren('myVar') myVar: QueryList<CartItemComponent>;
   private subscription: Subscription;
+  private totalItemsInCartSubscription: Subscription;
+  private totalPriceSubscription: Subscription;
+
   @Output() onCartItemDeleted = new EventEmitter();
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.productsInCart = [];
     this.subscribeToCartChanges();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    console.log('unsubscribed from Observable');
+    this.totalItemsInCartSubscription.unsubscribe();
+    this.totalPriceSubscription.unsubscribe();
   }
 
   addProduct(product: CookedProduct): void {
-    this.cartService.addProductToCart(product);
+    const itemToAdd = new CartItem();
+    itemToAdd.quantity = 1;
+    itemToAdd.product = product;
+
+    this.cartService.addProductToCart(itemToAdd);
 
     this.myVar.forEach((child, index) => {
-      if (child.productName === product.name){
+      if (child.productName === product.name) {
         child.callThiMethodFromParentComponent();
       }
     });
   }
 
   onBuy(): void {
-    this.cartService.processPayment(this.productsInCart);
   }
 
   deleteCartItem(event: Event, productToDelete: string) {
     const itemToDelete = this.productsInCart.find((cartItem: CartItem) => cartItem.product.name === productToDelete);
 
     if (!!itemToDelete) {
-
       this.onCartItemDeleted.emit(productToDelete);
+      const deleteOneItem = new CartItem();
+      deleteOneItem.product = itemToDelete.product;
+      deleteOneItem.quantity = 1;
+      this.cartService.removeProductFromCart(deleteOneItem);
+    }
+  }
 
-      if (itemToDelete.quantity > 1) {
-        itemToDelete.quantity--;
-      }else {
-        const index = this.productsInCart.indexOf(itemToDelete);
-        this.productsInCart.splice(index, 1);
-      }
+  onResetCart() {
+    for (const productToDelete of this.productsInCart){
+      this.onCartItemDeleted.emit(productToDelete.product.name);
     }
 
-    this.recalcTotalPrice();
-  }
-
-  private findCartItem(nameOfCartItemToFind: string): CartItem {
-    return this.productsInCart.find((cartItem: CartItem) => cartItem.product.name === name);
-  }
-
-  private recalcTotalPrice(): void {
-    this.totalPrice = CartService.getTotalPrice(this.productsInCart);
+    this.cartService.resetCart();
   }
 
   private subscribeToCartChanges(): void {
-    this.subscription = this.cartService.onReceive.subscribe(
-      (data: CookedProduct) => this.addProductToCart(data),
+    this.subscribeToCartItemsChanges();
+    this.subscribeToNumberOfItemsInCartChanges();
+    this.subscribeToTotalPriceChanges();
+  }
+
+  private subscribeToTotalPriceChanges() {
+    this.totalPriceSubscription = this.cartService.onTotalPriceChanges.subscribe(
+      (total: number) => this.totalPrice = total,
       (error) => console.log(error)
     );
   }
 
-  private addProductToCart(data: CookedProduct): void {
-    if (!!data) {
-      const item = this.productsInCart.find((cartItem: CartItem) => cartItem.product.name === data.name);
-      if (!!item) {
-        item.quantity++;
-        console.log(item.quantity);
-      }else {
-        this.productsInCart.push({product: data, quantity: 1});
-      }
-      this.recalcTotalPrice();
-    }
+  private subscribeToNumberOfItemsInCartChanges() {
+    this.totalItemsInCartSubscription = this.cartService.onTotalItemsInCartChanges.subscribe(
+      (num: number) => this.totalItemsInCart = num,
+      (error) => console.log(error)
+    );
+  }
+
+  private subscribeToCartItemsChanges() {
+    this.subscription = this.cartService.cartChanges.subscribe(
+      (data: CartItem[]) => this.productsInCart = data,
+      (error) => console.log(error)
+    );
   }
 }

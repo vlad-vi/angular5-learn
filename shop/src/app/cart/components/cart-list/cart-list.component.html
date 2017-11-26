@@ -8,7 +8,8 @@
         (onDeleteCartItem)="deleteCartItem($event, cartItem.product.name)" #myVar
       ></cart-item>
     </div>
-    Total price: {{ totalPrice }}
+    Items in cart: {{ totalItemsInCart }}. Total price: {{ totalPrice }}.
     <button (click)="onBuy()">Buy</button>
+    <button (click)="onResetCart()">Reset Cart</button>
   </div>
 </div>
