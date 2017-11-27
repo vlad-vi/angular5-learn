@@ -22,19 +22,15 @@ export class CartService {
   constructor() {
   }
 
-  static getTotalPrice(productsToBuy: CartItem[]): number {
+  public getTotalPriceOfItemsInCart(): number {
     let sum = 0;
-    for (const item of productsToBuy) {
+    for (const item of this.itemsInCart) {
       sum += item.product.price * item.quantity;
     }
     return sum;
   }
 
-  private getTotalPriceOfItemsInCart(): number {
-    return CartService.getTotalPrice(this.itemsInCart);
-  }
-
-  private getTotalNumberOfItemsInCart(): number {
+  public getTotalNumberOfItemsInCart(): number {
     let sum = 0;
     for (const item of this.itemsInCart) {
       sum += item.quantity;

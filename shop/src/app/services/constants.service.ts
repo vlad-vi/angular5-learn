@@ -10,7 +10,7 @@ export class ConstantsService {
   }
 }
 
-export const AppInfo = {
+const AppInfo = {
   application: 'TaskManager',
   version: '1.0'
 };
