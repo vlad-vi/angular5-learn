@@ -1,5 +1,5 @@
 export enum ProductCategory {
-  salad,
-  consoles,
-  pie
+  salad = 'Salad',
+  misc = 'Misc',
+  pie = 'Pie'
 }

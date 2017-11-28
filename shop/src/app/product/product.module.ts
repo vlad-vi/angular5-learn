@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {ProductComponent} from './components/product-component/product.component';
 import {ProductListComponent} from './components/product-list/product-list.component';
 import {ProductsService} from './services/products.service';
+import {OrderByPipe} from "../pipes/orderby.pipe";
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import {ProductsService} from './services/products.service';
   declarations: [
     ProductComponent,
     ProductListComponent,
+    OrderByPipe
   ],
   exports: [
     ProductListComponent

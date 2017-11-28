@@ -1,5 +1,5 @@
 <div *ngIf="products != null && products.length > 0">
-  <app-product-component *ngFor="let item of products"
+  <app-product-component *ngFor="let item of (products | orderBy : 'category' : true )"
                          [product]=item
                          (onAddToCart)="onAddToCart.emit($event)"></app-product-component>
 </div>

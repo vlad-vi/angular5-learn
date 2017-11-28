@@ -1,12 +1,11 @@
 <div class="productStyle">
   <div>Name: {{ product.name }}</div>
   <div>Description: {{product.description}}</div>
-  <div>Price: {{product.price}}</div>
-  <div>Category: {{ product.category }}</div>
-
+  <div>Price: {{product.price | currency: 'USD':'symbol':'2.4-4'}}</div>
+  <div>Category: {{ product.category | uppercase }}</div>
+  <div>Last update: {{ product.lastUpdate | date:'(GG) yyyy-MM-dd HH:mm a z':'+0300'}}</div>
   <b>Ingredients</b>
-  <div *ngFor="let ingr of product.ingredients">{{ingr}}</div>
-
+  <div *ngFor="let ingr of product.ingredients ">{{ingr}}</div>
   <b>Equivalents</b>
   <div *ngFor="let equivalent of product.equivalents">{{equivalent}}</div>
   <button (click)="onAddToCart.emit(product)"

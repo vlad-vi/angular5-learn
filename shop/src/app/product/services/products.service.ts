@@ -16,7 +16,8 @@ export class ProductsService {
       2,
       ['milk', 'sugar'],
       ['equivalent1', 'equivalent2', 'equivalent3'],
-      'Some long item description');
+      'Some long item description',
+      new Date('2017-11-11'));
 
     const p2 = new CookedProduct(
       'Other product name',
@@ -25,16 +26,18 @@ export class ProductsService {
       0,
       ['salad', 'tomatoes', 'soy', 'water'],
       ['equivalent1', 'equivalent2'],
-      'Yet one more long item description');
+      'Yet one more long item description',
+      new Date('2017-10-01'));
 
     const p3 = new CookedProduct(
       'Product #01',
       113.06,
-      ProductCategory.consoles,
+      ProductCategory.misc,
       5,
       ['console', 'power cable'],
       ['product #02'],
-      'blah-blah description');
+      'blah-blah description',
+      new Date('2017-12-21'));
 
     return [p1, p2, p3];
   }

@@ -7,6 +7,7 @@ export interface IProduct {
   price: number;
   category?: ProductCategory;
   itemsInStock: number;
+  lastUpdate?: Date;
 }
 
 export interface ICookable {
@@ -15,13 +16,15 @@ export interface ICookable {
 }
 
 export class CookedProduct implements IProduct, ICookable {
+
   constructor(public name: string,
               public price: number,
               public category: ProductCategory,
               public itemsInStock: number,
               public ingredients: Array<string>,
               public equivalents: Array<string>,
-              public description?: string
+              public description?: string,
+              public lastUpdate?: Date
               ) {
   }
 }

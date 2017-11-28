@@ -10,11 +10,12 @@ import {GeneratorService} from './services/generator.service';
 import {ConfigOptionsService} from './services/config-options.service';
 import {FontChangerDirective} from './directives/font-changer.directive';
 import {LocalStorageService} from './services/local-storage.service';
+import {OrderByPipe} from './pipes/orderby.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FontChangerDirective
+    FontChangerDirective,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,7 @@ import {LocalStorageService} from './services/local-storage.service';
     ProductModule,
   ],
   exports: [
-    FontChangerDirective
+    FontChangerDirective,
   ],
   providers: [
     ConfigOptionsService,
