@@ -1,2 +1,4 @@
-Total price recalrulated in Cart.
-Adding item to cart reduces items in stock and item may become unavailable. Removing item from cart will lead to making the product available again.
+	- для форматирования цены -- product component
+	- для форматирования даты обновления -- product component
+	- для форматирования категории в верхний регистр  -- product component
+  - cоздать пользовательский пайп OrderBy для сортировки массива объектов -- product list component
