@@ -1,0 +1,13 @@
+<h2>{{product.name}}</h2>
+
+<div class="panel-body">
+  <ul>
+    <li>Price: {{product.price}}</li>
+    <li>In stock: {{product.itemsInStock}}</li>
+    <li>Description: {{product.description}}</li>
+  </ul>
+  <button class="btn btn-warning btn-sm"
+          (click)="goBack()">
+    Back
+  </button>
+</div>
