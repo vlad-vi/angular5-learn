@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {OrderService} from '../../services/order.service';
+import {Order, OrderItem} from '../../models/order';
 
 @Component({
   selector: 'app-manage-orders',
@@ -7,10 +9,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ManageOrdersComponent implements OnInit {
-
-  constructor() { }
+  private orders: Order[]
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+    this.orderService.getOrders().then(orders => this.orders = orders);
   }
 
 }

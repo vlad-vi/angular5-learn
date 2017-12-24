@@ -3,7 +3,7 @@ import {Product} from '../models/product';
 import {CartItem} from '../models/cartItem';
 
 @Injectable()
-export class MessagesService {
+export class PublicCartService {
   isDisplayed = false;
 
   private itemsInCart: CartItem[] = [];
@@ -58,17 +58,8 @@ export class MessagesService {
     }
   }
 
-  // resetCart(items?: CartItem[]): void {
-  //
-  //   if (!!items) {
-  //     this.itemsInCart = items;
-  //     for (const o of items){
-  //       console.log('item: ' + o.name);
-  //     }
-  //   }else{
-  //     this.itemsInCart.length = 0;
-  //
-  //   }
-  // }
+  resetCart(): void {
+    this.itemsInCart.length = 0;
+  }
 
 }

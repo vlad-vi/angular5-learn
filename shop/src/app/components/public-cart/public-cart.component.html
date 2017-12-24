@@ -1,10 +1,10 @@
 <div class="row">
-  <h4 class="col-md-10">Message Log</h4>
+  <h4 class="col-md-10">Cart</h4>
   <span class="col-md-2">
     <a class="btn btn-default" (click)="close()">Close Cart</a>
   </span>
 </div>
-<div *ngFor="let message of messagesService.getCartItemsCache(); let i=index">
+<div *ngFor="let message of publicCartService.getCartItemsCache(); let i=index">
   <div class="message-row">
     #{{i}}- {{message.name}} ({{message.numberInCart}} items)
     <button (click)="deleteCartItem(message.id)" class="buttonDelete">Delete from cart</button>

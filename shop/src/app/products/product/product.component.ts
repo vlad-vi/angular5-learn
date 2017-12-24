@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {Product} from '../../models/product';
-import {CartService, MessagesService} from '../../services';
+import {PublicCartService} from '../../services';
 
 @Component({
   selector: 'product',
@@ -13,12 +13,11 @@ export class ProductComponent {
   @Output() onComplete = new EventEmitter<Product>();
 
   constructor(private router: Router,
-              private messagesService: MessagesService,
-              private cartService: CartService) {
+              private messagesService: PublicCartService,
+              ) {
   }
 
   addToCart() {
-    // this.cartService.addProductToCart(this.product);
     this.messagesService.addProductToCart(this.product);
   }
 

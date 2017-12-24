@@ -7,19 +7,20 @@ import {GeneratorService} from './services/generator.service';
 import {ConfigOptionsService} from './services/config-options.service';
 import {FontChangerDirective} from './directives/font-changer.directive';
 import {LocalStorageService} from './services/local-storage.service';
-import {Router, RouterModule} from '@angular/router';
+import {Router} from '@angular/router';
 import {appRouterComponents, AppRoutingModule} from './app.routing.module';
-import {MessagesComponent} from './components';
-import {AuthService, CartService, DialogService, MessagesService} from './services';
+import {PublicCartComponent} from './components';
+import {AuthService, DialogService, PublicCartService} from './services';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductsModule} from './products/products.module';
+import {OrderService} from './services/order.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     FontChangerDirective,
     appRouterComponents,
-    MessagesComponent
+    PublicCartComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +33,11 @@ import {ProductsModule} from './products/products.module';
   ],
   providers: [
     ConfigOptionsService,
-    CartService,
     {provide: ConstantsService, useValue: new ConstantsService()},
     {provide: GeneratorService, useFactory: () => new GeneratorService(10)},
     LocalStorageService,
-    MessagesService, AuthGuard, DialogService, AuthService
+    PublicCartService, AuthGuard, DialogService, AuthService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

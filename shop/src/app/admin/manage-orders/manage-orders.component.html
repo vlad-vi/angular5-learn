@@ -1,3 +1,9 @@
-<p>
-  manage-users works!
-</p>
+
+  <div *ngFor="let item of orders">
+    Date: {{item.date}}
+    <ul>
+      <li *ngFor="let orderItem of item.items">
+        {{orderItem.productName}} - {{orderItem.quantity}}
+      </li>
+    </ul>
+  </div>

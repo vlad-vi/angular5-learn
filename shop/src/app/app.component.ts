@@ -1,14 +1,11 @@
 import {Component, OnDestroy, OnInit, Optional, ViewChild} from '@angular/core';
-// import {CartListComponent} from './cart/components/cart-list/cart-list.component';
-// import {CookedProduct} from './product/models/product.model';
-// import {ProductListComponent} from './product/components/product-list/product-list.component';
 import {ConstantsService} from './services/constants.service';
 import {ConfigOptionsService} from './services/config-options.service';
 import {ConfigOptions} from './models/config-options.model';
 import {LocalStorageService} from './services/local-storage.service';
 import {ProductListComponent} from './products';
 import {Meta, Title} from '@angular/platform-browser';
-import {MessagesService} from './services';
+import {PublicCartService} from './services';
 import {NavigationEnd, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -22,10 +19,9 @@ export class AppComponent implements OnInit, OnDestroy {
   lastVisited: string;
   private sub: Subscription;
 
-  // @ViewChild(CartListComponent) cart: CartListComponent;
   @ViewChild('productList') productList: ProductListComponent;
 
-  constructor(public messagesService: MessagesService,
+  constructor(public publicCartService: PublicCartService,
               private titleService: Title,
               private metaService: Meta,
               private router: Router,
@@ -55,8 +51,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   displayMessages(): void {
-    this.router.navigate([{outlets: {popup: ['messages']}}]);
-    this.messagesService.isDisplayed = true;
+    this.router.navigate([{outlets: {popup: ['public-cart']}}]);
+    this.publicCartService.isDisplayed = true;
   }
 
   ngOnInit() {
@@ -86,13 +82,4 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       );
   }
-
-  // onBuy(product: CookedProduct) {
-  //   product.itemsInStock--;
-  //   this.cart.addProduct(product);
-  // }
-  //
-  // itemRemovedFromCart(productName: string) {
-  //   this.productList.returnProduct(productName);
-  // }
 }

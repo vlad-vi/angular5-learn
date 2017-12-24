@@ -3,7 +3,9 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {CartItem} from '../../models/cartItem';
 import {CartArrayService} from '../services/cart-array.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {CartService, MessagesService} from '../../services';
+import {PublicCartService} from '../../services';
+import {OrderService} from '../../services/order.service';
+import {Order, OrderItem} from '../../models/order';
 
 @Component({
   templateUrl: './cart-item-list.component.html',
@@ -15,16 +17,13 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   constructor(private cartArrayService: CartArrayService,
               private route: ActivatedRoute,
-              private ms: MessagesService,
-              private cartService: CartService) {
+              private publicCartService: PublicCartService,
+              private os: OrderService) {
   }
 
 
   ngOnInit() {
-    // this.cartArrayService.getCartItems()
-    //   .then(cartItems => this.cartItems = [...cartItems])
-    //   .catch(err => console.log(err));
-    this.ms.getCartItems()
+    this.publicCartService.getCartItems()
       .then(cartItems => this.cartItems = [...cartItems])
       .catch(err => console.log(err));
 
@@ -52,9 +51,14 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   }
 
   placeOrder(): void {
-    // todo free up the cart
-
+    // free up the cart
+    this.publicCartService.resetCart();
     // save order
+    let orderItems = new Array<OrderItem>();
+    for (const item of this.cartItems){
+      orderItems.push(new OrderItem(item.name, item.numberInCart));
+    }
 
+    this.os.placeOrder(new Order(-1, orderItems));
   }
 }

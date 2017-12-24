@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, ExtraOptions} from '@angular/router';
-
-import {AboutComponent, LoginComponent, MessagesComponent, PageNotFoundComponent} from './components';
+import {Routes, RouterModule} from '@angular/router';
+import {AboutComponent, LoginComponent, PublicCartComponent, PageNotFoundComponent} from './components';
 import {AuthGuard} from './guards/auth.guard';
-// import {CustomPreloadingStrategyService} from './services';
+
 
 const routes: Routes = [
   {
@@ -35,8 +34,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'messages',
-    component: MessagesComponent,
+    path: 'public-cart',
+    component: PublicCartComponent,
     outlet: 'popup'
   },
   {
@@ -47,20 +46,13 @@ const routes: Routes = [
     data: {title: 'Page Not Found'}
   }
 ];
-// const extraOptions: ExtraOptions = {
-//   preloadingStrategy: CustomPreloadingStrategyService,
-//   enableTracing: true // Makes the router log all its internal events to the console.
-// };
 
 export let appRouterComponents = [AboutComponent, PageNotFoundComponent, LoginComponent];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes) // , extraOptions
+    RouterModule.forRoot(routes)
   ],
-  // providers: [
-  //   CustomPreloadingStrategyService
-  // ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

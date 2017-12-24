@@ -1,7 +1,10 @@
 export class Order {
+
+  public date: string;
+
   constructor(public id: number,
-              public items: OrderItem[],
-              public date: Date) {
+              public items: OrderItem[]) {
+    this.date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
   }
 }
 
