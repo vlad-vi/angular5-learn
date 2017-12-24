@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 
 import {CartItem} from '../../models/cartItem';
 import {CartService, MessagesService} from "../../services";
+import {Product} from "../../models/product";
 
 const cartItemList = [
   new CartItem(1, 'item1', 33)
@@ -17,33 +18,26 @@ export class CartArrayService {
   }
 
   getCartItems(): Promise<CartItem[]> {
-    return cartItemListPromise;
+    return this.messageService.getCartItems();
+    // return cartItemListPromise;
   }
 
   getCartItem(id: number | string): Promise<CartItem> {
-    return this.getCartItems()
+    return this.messageService.getCartItems()
       .then(cartItems => cartItems.find(cartItem => cartItem.id === +id))
       .catch(() => Promise.reject('Error in getCartItem method'));
+    // return this.getCartItems()
+    //   .then(cartItems => cartItems.find(cartItem => cartItem.id === +id))
+    //   .catch(() => Promise.reject('Error in getCartItem method'));
   }
 
   addCartItem(cartItem: CartItem): void {
-    cartItemList.push(cartItem);
-
+    // cartItemList.push(cartItem);
+    this.messageService.addProductToCart(new Product(cartItem.id, cartItem.name, -1, -1));
   }
 
   updateCartItem(cartItem: CartItem): void {
-    let i = -1;
-
-    cartItemList.forEach((item, index) => {
-      if (item.id === cartItem.id) {
-        i = index;
-        return false;
-      }
-    });
-
-    if (i > -1) {
-      cartItemList.splice(i, 1, cartItem);
-    }
+    this.messageService.updateCartItem(cartItem);
 
   }
 }

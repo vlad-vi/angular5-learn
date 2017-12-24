@@ -23,9 +23,28 @@ export class MessagesService {
     }
   }
 
+  updateCartItem(cartItem: CartItem): void {
+    let i = -1;
 
-  getCartItems(): CartItem[] {
+    this.itemsInCart.forEach((item, index) => {
+      if (item.id === cartItem.id) {
+        i = index;
+        return false;
+      }
+    });
+
+    if (i > -1) {
+      this.itemsInCart.splice(i, 1, cartItem);
+    }
+
+  }
+
+  getCartItemsCache(): CartItem[] {
     return this.itemsInCart;
+  }
+
+  getCartItems(): Promise<CartItem[]> {
+    return Promise.resolve(this.itemsInCart);
   }
 
   removeItemFromCart(id: number): void {

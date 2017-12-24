@@ -3,7 +3,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {CartItem} from '../../models/cartItem';
 import {CartArrayService} from '../services/cart-array.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {CartService} from '../../services';
+import {CartService, MessagesService} from '../../services';
 
 @Component({
   templateUrl: './cart-item-list.component.html',
@@ -15,12 +15,16 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   constructor(private cartArrayService: CartArrayService,
               private route: ActivatedRoute,
+              private ms: MessagesService,
               private cartService: CartService) {
   }
 
 
   ngOnInit() {
-    this.cartArrayService.getCartItems()
+    // this.cartArrayService.getCartItems()
+    //   .then(cartItems => this.cartItems = [...cartItems])
+    //   .catch(err => console.log(err));
+    this.ms.getCartItems()
       .then(cartItems => this.cartItems = [...cartItems])
       .catch(err => console.log(err));
 
