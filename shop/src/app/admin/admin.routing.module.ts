@@ -14,7 +14,7 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
-          {path: 'users', component: ManageUsersComponent},
+          {path: 'cartItems', component: ManageUsersComponent},
           {path: 'products', component: ManageProductsComponent},
           {path: '', component: AdminDashboardComponent}
         ]

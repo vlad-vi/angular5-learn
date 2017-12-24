@@ -1,0 +1,6 @@
+<cartItem
+  *ngFor="let item of cartItems"
+  [cartItem]="item"
+  [class.edited]="isEdited(item)">
+</cartItem>
+

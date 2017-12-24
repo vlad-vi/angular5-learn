@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Cart</div>
+  <div class="panel-body">
+    <ul>
+      <li>Name: {{cartItem.name}}</li>
+      <li>In Cart: {{cartItem.numberInCart}}</li>
+    </ul>
+    <button class="btn btn-warning btn-sm"
+            (click)="editCartItem()">
+      Edit
+    </button>
+  </div>
+</div>

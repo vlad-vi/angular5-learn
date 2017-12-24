@@ -1,37 +1,37 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {UserFormComponent, UserListComponent, UsersComponent} from '.';
+import {CartItemFormComponent, CartItemListComponent, CartItemsComponent} from '.';
 import {CanDeactivateGuard} from '../guards/can-deactivate.guard';
-import {UserResolveGuard} from './../guards/user-resolve.guard';
+import {CartResolveGuard} from '../guards/cart-resolve.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: UsersComponent,
+    component: CartItemsComponent,
     children: [
       {
         path: 'add',
-        component: UserFormComponent
+        component: CartItemFormComponent
       },
       {
         path: 'edit/:id',
-        component: UserFormComponent,
+        component: CartItemFormComponent,
         canDeactivate: [CanDeactivateGuard],
         resolve: {
-          user: UserResolveGuard
+          cartItem: CartResolveGuard
         }
 
       },
       {
         path: '',
-        component: UserListComponent
+        component: CartItemListComponent
       },
     ]
   }
 ];
 
-export let usersRouterComponents = [UsersComponent, UserListComponent, UserFormComponent];
+export let cartItemsRouterComponents = [CartItemsComponent, CartItemListComponent, CartItemFormComponent];
 
 @NgModule({
   imports: [
@@ -42,8 +42,8 @@ export let usersRouterComponents = [UsersComponent, UserListComponent, UserFormC
   ],
   providers: [
     CanDeactivateGuard,
-    UserResolveGuard
+    CartResolveGuard
   ]
 })
-export class UsersRoutingModule {
+export class CartItemsRoutingModule {
 }

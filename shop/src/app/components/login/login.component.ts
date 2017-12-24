@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         };
 
 
-        // Redirect the user
+        // Redirect the cartItem
         this.router.navigate([redirect], navigationExtras);
       }
     });

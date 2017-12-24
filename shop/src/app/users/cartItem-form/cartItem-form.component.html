@@ -1,27 +1,22 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="pannel-title">
-      User Form
+      Edit cart Form
     </h4>
   </div>
   <div class="panel-body">
-    <form *ngIf="user" (ngSubmit)="saveUser()" id="user-form">
+    <form *ngIf="cartItem" (ngSubmit)="saveCartItem()" id="user-form">
       <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text"
-               class="form-control"
-               id="firstName" name="firstName"
-               placeholder="First Name"
-               required
-               [(ngModel)]="user.firstName">
+        <label>Name</label>
+        {{cartItem.name}}
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text"
+        <label for="lastName">Number of items</label>
+        <input type="number"
                class="form-control"
                id="lastName" name="lastName"
-               placeholder="Last Name"
-               [(ngModel)]="user.lastName">
+               placeholder="0"
+               [(ngModel)]="cartItem.numberInCart">
       </div>
       <button
         type="submit"

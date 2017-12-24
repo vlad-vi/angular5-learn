@@ -16,11 +16,11 @@ const routes: Routes = [
     }
   },
   {
-    path: 'users',
-    loadChildren: 'app/users/users.module#UsersModule',
+    path: 'cart',
+    loadChildren: 'app/users/cart.module#CartModule',
     data: {
       preload: true,
-      title: 'Users'
+      title: 'Cart'
     }
   },
   {
