@@ -10,7 +10,7 @@ import {LocalStorageService} from './services/local-storage.service';
 import {Router, RouterModule} from '@angular/router';
 import {appRouterComponents, AppRoutingModule} from './app.routing.module';
 import {MessagesComponent} from './components';
-import {AuthService, DialogService, MessagesService} from './services';
+import {AuthService, CartService, DialogService, MessagesService} from './services';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductsModule} from './products/products.module';
 
@@ -32,6 +32,7 @@ import {ProductsModule} from './products/products.module';
   ],
   providers: [
     ConfigOptionsService,
+    CartService,
     { provide: ConstantsService, useValue: new ConstantsService()} ,
     { provide: GeneratorService, useFactory: () => new GeneratorService(10) },
     LocalStorageService,

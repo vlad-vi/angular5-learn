@@ -9,9 +9,6 @@
         <div>
           <ul class="nav navbar-nav">
             <li routerLinkActive="active">
-              <a routerLink="/about">About</a>
-            </li>
-            <li routerLinkActive="active">
               <a routerLink="/cart">Cart</a>
             </li>
             <li routerLinkActive="active">
@@ -34,10 +31,11 @@
         </router-outlet>
         <!-- Routed views go here -->
       </div>
+      <br/>
       <div class="col-md-2">
         <button class="btn btn-success"
                 *ngIf="!messagesService.isDisplayed"
-                (click)="displayMessages()">Show Messages
+                (click)="displayMessages()">Show Cart
         </button>
 
         <router-outlet name="popup"></router-outlet>
@@ -49,5 +47,5 @@
 
 
 
-<div fontChangerDirective="44px">Copyright 2017 - CLICK ME</div>
-<div>Last visit: {{lastVisited }}</div>
+<!--<div fontChangerDirective="44px">Copyright 2017 - CLICK ME</div>-->
+<!--<div>Last visit: {{lastVisited }}</div>-->

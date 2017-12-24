@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 
-import { CartItem } from '../../models/cartItem';
-import { CartArrayService } from '../services/cart-array.service';
+import {CartItem} from '../../models/cartItem';
+import {CartArrayService} from '../services/cart-array.service';
 import {ActivatedRoute, Params} from '@angular/router';
+import {CartService} from "../../services";
 
 @Component({
   templateUrl: './cartItem-list.component.html',
@@ -12,10 +13,11 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   cartItems: Array<CartItem>;
   private editedCartItem: CartItem;
 
-  constructor(
-    private cartArrayService: CartArrayService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private cartArrayService: CartArrayService,
+              private route: ActivatedRoute,
+              private cartService: CartService) {
+  }
+
 
   ngOnInit() {
     this.cartArrayService.getCartItems()

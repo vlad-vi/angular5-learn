@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><b><a routerLink="/product/{{product.id}}" >{{product.name}}</a></b></div>
+  <div class="panel-body">
+    <ul>
+      <li>Price: {{product.price}}</li>
+      <li>In stock: {{product.itemsInStock}}</li>
+      <li>Description: {{product.description}}</li>
+    </ul>
+    <button class="btn btn-warning btn-sm"
+            (click)="editProduct()">
+      Edit
+    </button>
+  </div>
+</div>

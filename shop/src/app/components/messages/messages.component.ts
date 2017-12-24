@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { MessagesService } from './../../services';
+import {MessagesService} from './../../services';
 
 @Component({
   selector: 'app-messages',
@@ -10,16 +10,19 @@ import { MessagesService } from './../../services';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(
-    public messagesService: MessagesService,
-    private router: Router
-  ) { }
+  constructor(public messagesService: MessagesService,
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   close() {
-    this.router.navigate([{ outlets: { popup: null } }]);
+    this.router.navigate([{outlets: {popup: null}}]);
     this.messagesService.isDisplayed = false;
+  }
+
+  deleteCartItem(id: number): void {
+    this.messagesService.removeItemFromCart(id);
   }
 }

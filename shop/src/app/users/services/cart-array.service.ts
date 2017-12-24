@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 
 import {CartItem} from '../../models/cartItem';
+import {CartService, MessagesService} from "../../services";
 
 const cartItemList = [
   new CartItem(1, 'item1', 33)
@@ -10,7 +11,16 @@ const cartItemListPromise = Promise.resolve(cartItemList);
 
 @Injectable()
 export class CartArrayService {
+
+  constructor(private cartService: CartService,
+              private messageService: MessagesService) {
+  }
+
   getCartItems(): Promise<CartItem[]> {
+    cartItemList.length = 0;
+    for (const item of this.messageService.getCartItems()) {
+      cartItemList.push(item);
+    }
     return cartItemListPromise;
   }
 
@@ -20,8 +30,9 @@ export class CartArrayService {
       .catch(() => Promise.reject('Error in getCartItem method'));
   }
 
-  addCartItem(user: CartItem): void {
-    cartItemList.push(user);
+  addCartItem(cartItem: CartItem): void {
+    cartItemList.push(cartItem);
+
   }
 
   updateCartItem(cartItem: CartItem): void {
@@ -37,5 +48,6 @@ export class CartArrayService {
     if (i > -1) {
       cartItemList.splice(i, 1, cartItem);
     }
+
   }
 }

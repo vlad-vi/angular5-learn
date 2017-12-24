@@ -1,3 +1,7 @@
-<p>
-  manage-tasks works!
-</p>
+<a routerLink="../../edit">Add Product</a>
+<br/>
+
+<product-admin
+  *ngFor="let product of productList"
+  [product]="product" >
+</product-admin>

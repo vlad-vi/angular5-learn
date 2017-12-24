@@ -10,5 +10,10 @@
 			(click)="editProduct()">
 			Edit
 		</button>
+    <button (click)="addToCart()"
+            [ngClass]="{'buttonInactive': product.itemsInStock <= 0}"
+            [disabled]="product.itemsInStock <= 0">
+      Add to Cart
+    </button>
 	</div>
 </div>

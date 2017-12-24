@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent} from '.';
+import {AdminComponent, ProductAdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageOrdersComponent} from '.';
 import {AuthGuard} from '../guards/auth.guard';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
-          {path: 'cartItems', component: ManageUsersComponent},
+          {path: 'orders', component: ManageOrdersComponent},
           {path: 'products', component: ManageProductsComponent},
           {path: '', component: AdminDashboardComponent}
         ]
@@ -23,7 +23,12 @@ const routes: Routes = [
   }
 ];
 
-export let adminRouterComponents = [AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent];
+export let adminRouterComponents = [
+  AdminComponent,
+  AdminDashboardComponent,
+  ManageProductsComponent,
+  ManageOrdersComponent,
+  ProductAdminComponent];
 
 @NgModule({
   imports: [
