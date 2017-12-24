@@ -33,8 +33,8 @@ import {ProductsModule} from './products/products.module';
   providers: [
     ConfigOptionsService,
     CartService,
-    { provide: ConstantsService, useValue: new ConstantsService()} ,
-    { provide: GeneratorService, useFactory: () => new GeneratorService(10) },
+    {provide: ConstantsService, useValue: new ConstantsService()},
+    {provide: GeneratorService, useFactory: () => new GeneratorService(10)},
     LocalStorageService,
     MessagesService, AuthGuard, DialogService, AuthService
   ],

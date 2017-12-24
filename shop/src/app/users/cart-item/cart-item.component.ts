@@ -4,9 +4,9 @@ import { CartItem } from '../../models/cartItem';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'cartItem',
-  templateUrl: './cartItem.component.html',
-  styleUrls: ['./cartItem.component.css']
+  selector: 'cart-item',
+  templateUrl: './cart-item.component.html',
+  styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent {
   @Input() cartItem: CartItem;
@@ -21,7 +21,7 @@ export class CartItemComponent {
     const link = ['/cart/edit', this.cartItem.id];
     this.router.navigate(link);
     // or
-    // const link = ['edit', this.cartItem.id];
+    // const link = ['edit', this.cart-item.id];
     // this.router.navigate(link, {relativeTo: this.route});
 
   }

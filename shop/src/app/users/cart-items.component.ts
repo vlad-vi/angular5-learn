@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  templateUrl: './cartItems.component.html',
-  styleUrls: ['./cartItems.component.css']
+  templateUrl: './cart-items.component.html',
+  styleUrls: ['./cart-items.component.css']
 })
 export class CartItemsComponent implements OnInit {
 

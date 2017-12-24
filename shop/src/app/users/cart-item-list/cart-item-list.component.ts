@@ -3,11 +3,11 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {CartItem} from '../../models/cartItem';
 import {CartArrayService} from '../services/cart-array.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {CartService} from "../../services";
+import {CartService} from '../../services';
 
 @Component({
-  templateUrl: './cartItem-list.component.html',
-  styleUrls: ['./cartItem-list.component.css']
+  templateUrl: './cart-item-list.component.html',
+  styleUrls: ['./cart-item-list.component.css']
 })
 export class CartItemListComponent implements OnInit, OnDestroy {
   cartItems: Array<CartItem>;
@@ -21,15 +21,15 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cartArrayService.getCartItems()
-      .then(users => this.cartItems = [...users])
+      .then(cartItems => this.cartItems = [...cartItems])
       .catch(err => console.log(err));
 
     // listen id from CartItemFormComponent
     this.route.paramMap
       .switchMap((params: Params) => this.cartArrayService.getCartItem(+params.get('id')))
       .subscribe(
-        (user: CartItem) => {
-          this.editedCartItem = {...user};
+        (cartItem: CartItem) => {
+          this.editedCartItem = {...cartItem};
           console.log(`Last time you edit user ${JSON.stringify(this.editedCartItem)}`);
         },
         err => console.log(err)
@@ -47,4 +47,10 @@ export class CartItemListComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  placeOrder(): void {
+    // todo free up the cart
+
+    // save order
+
+  }
 }

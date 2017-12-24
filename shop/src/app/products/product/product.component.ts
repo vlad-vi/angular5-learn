@@ -17,11 +17,6 @@ export class ProductComponent {
               private cartService: CartService) {
   }
 
-  editProduct() {
-    const link = ['/edit', this.product.id];
-    this.router.navigate(link);
-  }
-
   addToCart() {
     // this.cartService.addProductToCart(this.product);
     this.messagesService.addProductToCart(this.product);

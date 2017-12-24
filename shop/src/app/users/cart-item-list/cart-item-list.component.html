@@ -1,0 +1,20 @@
+<form *ngIf="cartItems?.length > 0" (ngSubmit)="placeOrder()" id="product-form">
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    form="product-form">
+    Place order
+  </button>
+</form>
+
+<div *ngIf="cartItems?.length <= 0">
+  <h4>Cart is empty</h4>
+</div>
+
+<cart-item
+  *ngFor="let item of cartItems"
+  [cartItem]="item"
+  [class.edited]="isEdited(item)">
+</cart-item>
+

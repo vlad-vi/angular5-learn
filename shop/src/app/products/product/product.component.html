@@ -6,10 +6,6 @@
       <li>In stock: {{product.itemsInStock}}</li>
       <li>Description: {{product.description}}</li>
 		</ul>
-		<button class="btn btn-warning btn-sm"
-			(click)="editProduct()">
-			Edit
-		</button>
     <button (click)="addToCart()"
             [ngClass]="{'buttonInactive': product.itemsInStock <= 0}"
             [disabled]="product.itemsInStock <= 0">

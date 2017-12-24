@@ -17,10 +17,6 @@ export class CartArrayService {
   }
 
   getCartItems(): Promise<CartItem[]> {
-    cartItemList.length = 0;
-    for (const item of this.messageService.getCartItems()) {
-      cartItemList.push(item);
-    }
     return cartItemListPromise;
   }
 

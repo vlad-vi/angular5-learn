@@ -8,8 +8,8 @@ import {CanComponentDeactivate} from './../../interfaces/can-component-deactivat
 
 
 @Component({
-  templateUrl: './cartItem-form.component.html',
-  styleUrls: ['./cartItem-form.component.css'],
+  templateUrl: './cart-item-form.component.html',
+  styleUrls: ['./cart-item-form.component.css'],
 })
 export class CartItemFormComponent implements OnInit, OnDestroy, CanComponentDeactivate {
   cartItem: CartItem;
