@@ -2,3 +2,4 @@ export * from './services/product-array.service';
 export * from './product-form/product-form.component';
 export * from './product/product.component';
 export * from './product-list/product-list.component';
+export * from './services/product-promise.service';

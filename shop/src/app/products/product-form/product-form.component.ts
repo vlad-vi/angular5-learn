@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import {Product} from '../../models/product';
 import {ProductArrayService} from '../services/product-array.service';
+import {ProductPromiseService} from '../services/product-promise.service';
 
 @Component({
   templateUrl: './product-form.component.html',
@@ -15,6 +16,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   product: Product;
 
   constructor(private productArrayService: ProductArrayService,
+              private productPromiseService: ProductPromiseService,
               private router: Router,
               private route: ActivatedRoute) {
   }
@@ -22,10 +24,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.product = new Product(null, '', null, null);
 
-    // it is not necessary to save subscription to route.paramMap
-    // it handles automatically
     this.route.paramMap
-      .switchMap((params: Params) => this.productArrayService.getproduct(+params.get('id')))
+      .switchMap((params: Params) => {
+        return params.get('id')
+          ? this.productPromiseService.getProduct(+params.get('id'))
+          : Promise.resolve(null);
+      })
       .subscribe(
         product => this.product = Object.assign({}, product),
         err => console.log(err)
@@ -38,14 +42,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   saveProduct() {
     const product = {...this.product};
+    const method = this.product.id ? 'updateProduct' : 'createProduct';
+    this.productPromiseService[method](product)
+      .then(() => this.goBack());
 
-    if (product.id) {
-      this.productArrayService.updateProduct(product);
-    } else {
-      this.productArrayService.addProduct(product);
-    }
-
-    this.goBack();
   }
 
   goBack(): void {

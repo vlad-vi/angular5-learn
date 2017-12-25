@@ -1,7 +1,13 @@
-<h3><a routerLink="../../edit">Add Product</a></h3>
-<br/>
+<!--<h3><a routerLink="../../edit">Add Product</a></h3>-->
+<!--<br/>-->
+<div>
+  <button class="btn btn-primary"
+          (click)="createProduct()">New Product</button>
+  <br><br>
+  <product-admin
+    *ngFor="let product of productList"
+    [product]="product"
+    (onDelete)="deleteProduct($event)">
+  </product-admin>
 
-<product-admin
-  *ngFor="let product of productList"
-  [product]="product" >
-</product-admin>
+</div>

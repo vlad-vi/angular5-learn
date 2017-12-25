@@ -3,7 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ProductListComponent, ProductComponent, ProductFormComponent, ProductArrayService} from '.';
 import {ProductsRoutingModule} from './products.routing.module';
-import { ProductInfoComponent } from './product-info/product-info.component';
+import {ProductInfoComponent} from './product-info/product-info.component';
+import {ProductPromiseService} from './services/product-promise.service';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { ProductInfoComponent } from './product-info/product-info.component';
   imports: [
     CommonModule,
     FormsModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
   ],
   providers: [
-    ProductArrayService
+    ProductArrayService,
+    ProductPromiseService
   ]
 })
 export class ProductsModule {

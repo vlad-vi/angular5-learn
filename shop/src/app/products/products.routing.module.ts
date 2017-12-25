@@ -28,6 +28,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'add',
+    component: ProductFormComponent
+  },
+  {
     path: 'edit/:id',
     component: ProductFormComponent,
     canActivate: [AuthGuard],

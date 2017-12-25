@@ -10,6 +10,11 @@ export class ProductAdminComponent {
 
   @Input() public product: Product;
   @Output() onComplete = new EventEmitter<Product>();
+  @Output() onDelete = new EventEmitter<Product>();
+
+  deleteProduct() {
+    this.onDelete.emit(this.product);
+  }
 
   constructor(private router: Router) {
   }

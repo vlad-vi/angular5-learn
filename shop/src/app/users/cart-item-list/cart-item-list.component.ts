@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 
 import {CartItem} from '../../models/cartItem';
 import {CartArrayService} from '../services/cart-array.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {PublicCartService} from '../../services';
 import {OrderService} from '../../services/order.service';
 import {Order, OrderItem} from '../../models/order';
@@ -17,8 +17,9 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   constructor(private cartArrayService: CartArrayService,
               private route: ActivatedRoute,
+              private router: Router,
               private publicCartService: PublicCartService,
-              private os: OrderService) {
+              private orderService: OrderService) {
   }
 
 
@@ -59,6 +60,13 @@ export class CartItemListComponent implements OnInit, OnDestroy {
       orderItems.push(new OrderItem(item.name, item.numberInCart));
     }
 
-    this.os.placeOrder(new Order(-1, orderItems));
+    this.orderService.placeOrder(new Order(0, orderItems))
+      .subscribe(
+      () => {
+        this.router.navigate(['admin/orders']);
+      },
+      error => console.log(error)
+    );
+    ;
   }
 }

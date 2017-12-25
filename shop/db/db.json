@@ -1,0 +1,117 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "date": "2017-12-24",
+      "items": [
+        {
+          "productName": "Banana",
+          "quantity": 12
+        },
+        {
+          "productName": "Carrot",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "items": [
+        {
+          "productName": "Banana23",
+          "quantity": 4
+        },
+        {
+          "productName": "Pineapple1",
+          "quantity": 4
+        }
+      ],
+      "date": "2017/12/25"
+    },
+    {
+      "id": 3,
+      "items": [
+        {
+          "productName": "Banana23",
+          "quantity": 1
+        }
+      ],
+      "date": "2017/12/25"
+    },
+    {
+      "id": 4,
+      "items": [
+        {
+          "productName": "Banana23",
+          "quantity": 3
+        },
+        {
+          "productName": "Pineapple1",
+          "quantity": 4
+        },
+        {
+          "productName": "Carrot",
+          "quantity": 4
+        }
+      ],
+      "date": "2017/12/25"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Banana23",
+      "itemsInStock": 1,
+      "price": 18,
+      "description": "Regular banana"
+    },
+    {
+      "id": 2,
+      "name": "Pineapple1",
+      "itemsInStock": 111,
+      "price": 26
+    },
+    {
+      "id": 3,
+      "name": "Carrot",
+      "itemsInStock": 5,
+      "price": 7,
+      "description": "Very healthy food"
+    },
+    {
+      "id": 4,
+      "name": "Banana1",
+      "itemsInStock": 1,
+      "price": 18,
+      "description": "Regular banana"
+    },
+    {
+      "id": 5,
+      "name": "Banana1",
+      "itemsInStock": 1,
+      "price": 18,
+      "description": "Regular banana"
+    },
+    {
+      "id": 6,
+      "name": "Banana1",
+      "itemsInStock": 1,
+      "price": 18,
+      "description": "Regular banana"
+    },
+    {
+      "id": 7,
+      "name": "Banana2",
+      "itemsInStock": 1,
+      "price": 181,
+      "description": "Regular banana"
+    },
+    {
+      "name": "Cool name",
+      "price": 33112,
+      "itemsInStock": 22,
+      "description": "clsdjfalskjdlfkjsldf",
+      "id": 8
+    }
+  ]
+}
