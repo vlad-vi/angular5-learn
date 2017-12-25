@@ -10,27 +10,17 @@ export class OrderService {
   private ordersName = 'orderStorage';
 
   constructor(private http: HttpClient) {
-    // this.orderList = new Array<Order>();
-    // this.restoreOrdersFromLocalStorage();
   }
-
-  // private restoreOrdersFromLocalStorage() {
-  //
-  //   const dataFromStorage = localStorage.getItem(this.ordersName);
-  //   if (dataFromStorage) {
-  //     this.orderList = JSON.parse(dataFromStorage);
-  //   }
-  // }
 
   placeOrder(order: Order): Observable<Order> {
     const url = this.ordersUrl,
       body = JSON.stringify(order),
       options = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
     return this.http.post(url, body, options)
-      .map( this.handleData )
-      .catch( this.handleError );
+      .map(this.handleData)
+      .catch(this.handleError);
   }
 
   getOrders(): Observable<Order[]> {

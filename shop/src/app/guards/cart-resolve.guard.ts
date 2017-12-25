@@ -12,7 +12,7 @@ export class CartResolveGuard implements Resolve<CartItem> {
   }
 
   resolve(route: ActivatedRouteSnapshot): Promise<CartItem> | null {
-    console.log('CartResolve Guard is called');
+    // console.log('CartResolve Guard is called');
     const id = +route.paramMap.get('id');
 
     return this.cartArrayService.getCartItem(id).then(cartItem => {

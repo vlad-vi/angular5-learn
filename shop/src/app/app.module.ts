@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ConstantsService} from './services/constants.service';
 import {GeneratorService} from './services/generator.service';
 import {ConfigOptionsService} from './services/config-options.service';
@@ -14,6 +14,7 @@ import {AuthService, DialogService, PublicCartService} from './services';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductsModule} from './products/products.module';
 import {OrderService} from './services/order.service';
+import {TimingInterceptor} from './services/timing-interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import {OrderService} from './services/order.service';
     {provide: GeneratorService, useFactory: () => new GeneratorService(10)},
     LocalStorageService,
     PublicCartService, AuthGuard, DialogService, AuthService,
-    OrderService
+    OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TimingInterceptor,
+      multi: true,
+    }
+
   ],
   bootstrap: [AppComponent]
 })
