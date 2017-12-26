@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AboutComponent, LoginComponent, PublicCartComponent, PageNotFoundComponent} from './components';
 import {AuthGuard} from './guards/auth.guard';
+import {ProcessOrderComponent} from "./components/process-order/process-order.component";
 
 
 const routes: Routes = [
@@ -27,7 +28,11 @@ const routes: Routes = [
     component: LoginComponent,
     data: {title: 'Login'}
   },
-
+  {
+    path: 'order',
+    component: ProcessOrderComponent,
+    data: {title: 'Make an order'}
+  },
   {
     path: '',
     redirectTo: '/home',

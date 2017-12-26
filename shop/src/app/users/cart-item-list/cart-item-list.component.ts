@@ -52,21 +52,9 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   }
 
   placeOrder(): void {
-    // free up the cart
-    this.publicCartService.resetCart();
-    // save order
-    let orderItems = new Array<OrderItem>();
-    for (const item of this.cartItems){
-      orderItems.push(new OrderItem(item.name, item.numberInCart));
-    }
+    const link = ['/order'];
+    this.router.navigate(link);
 
-    this.orderService.placeOrder(new Order(0, orderItems))
-      .subscribe(
-      () => {
-        this.router.navigate(['admin/orders']);
-      },
-      error => console.log(error)
-    );
-    ;
+    return;
   }
 }

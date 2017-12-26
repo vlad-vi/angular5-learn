@@ -15,19 +15,24 @@ import {AuthGuard} from './guards/auth.guard';
 import {ProductsModule} from './products/products.module';
 import {OrderService} from './services/order.service';
 import {TimingInterceptor} from './services/timing-interceptor';
+import { ProcessOrderComponent } from './components/process-order/process-order.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     FontChangerDirective,
     appRouterComponents,
-    PublicCartComponent
+    PublicCartComponent,
+    ProcessOrderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ProductsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FontChangerDirective,
