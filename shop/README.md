@@ -1,3 +1,1 @@
-ProductPromiseService - promise
-OrderService - observable
-Фильтр на запрос списока продуктов.
+Form available here: http://localhost:4200/order
