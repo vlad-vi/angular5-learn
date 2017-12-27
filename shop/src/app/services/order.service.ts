@@ -23,7 +23,7 @@ export class OrderService {
       .catch(this.handleError);
   }
 
-  getOrders(): Observable<Order[]> {
+  getOrders(): Observable<any> {
     return this.http.get(this.ordersUrl)
       .map(this.handleData)
       .catch(this.handleError);

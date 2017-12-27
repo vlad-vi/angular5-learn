@@ -1,1 +1,1 @@
-Form available here: http://localhost:4200/order
+Code coverage: npm run test:cc . Report will be available in /coverage folder

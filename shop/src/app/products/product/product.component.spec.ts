@@ -7,7 +7,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {PublicCartService} from '../../services';
 
 
-describe('HeaderComponent', () => {
+describe('ProductComponent', () => {
   let component: ProductComponent,
     fixture: ComponentFixture<ProductComponent>,
     de: DebugElement,
